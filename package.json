@@ -1,0 +1,26 @@
+{
+  "name": "omdb-bakcend",
+  "version": "1.0.0",
+  "description": "Rest API using IMDB Open API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JHiltunen/OMDb-bakcend.git"
+  },
+  "keywords": [
+    "nodejs",
+    "OMDb",
+    "API",
+    "REST",
+    "API"
+  ],
+  "author": "Joonas Hiltunen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JHiltunen/OMDb-bakcend/issues"
+  },
+  "homepage": "https://github.com/JHiltunen/OMDb-bakcend#readme"
+}
