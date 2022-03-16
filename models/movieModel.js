@@ -15,7 +15,7 @@ const getMovie = async (t) => {
             return response.data;
         }).catch(error => {
             console.log("Error", error);
-            return error;
+            return error.message;
         });
 
     return result;
