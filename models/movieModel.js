@@ -3,10 +3,8 @@
 const axios = require('axios');
 require('dotenv').config();
 
-console.log(process.env.API_KEY);
-
 const getMovie = async (t, year, plot) => {
-    const baseURL =  `https://www.omdbapi.com/?apikey=${process.env.API_KEY}&t=${t}&plot=${plot}`;
+    const baseURL =  `https://www.omdbapi.com/?apikey=${process.env.API_KEY}&t=${t}&y=${year}&plot=${plot}`;
 
     const result = axios
         .get(baseURL)
