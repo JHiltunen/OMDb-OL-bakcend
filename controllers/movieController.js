@@ -10,7 +10,7 @@ const movie_get = async (req, res) => {
         return;
     }
 
-    const movieResp = await movieModel.getMovie(req.query.t);
+    const movieResp = await movieModel.getMovie(req.query.t, year, plot);
     res.json(movieResp);
 };
 
