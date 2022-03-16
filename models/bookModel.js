@@ -1,8 +1,6 @@
 'use strict';
 
 const axios = require('axios');
-require('dotenv').config();
-
 const getBookInfo = async (isbn) => {
     const baseURL =  `https://openlibrary.org/isbn/${isbn}.json`;
 
