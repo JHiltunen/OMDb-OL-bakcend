@@ -1,26 +1,19 @@
-const https = require('https');
+const axios = require('axios')
+require('dotenv').config()
+
+console.log(process.env.API_KEY);
 
 const movie_list_get = async (req, res) => {
-    const baseURL = 'http://www.omdbapi.com/?apikey=[yourkey]&';
+    const baseURL =  `https://www.omdbapi.com/?apikey=${process.env.API_KEY}&t=${req.query.t}`;
 
-    const options = {
-        hostname: baseURL,
-        method: 'GET'
-    };
-
-    const request = https.request(options, res => {
-        console.log(`statusCode: ${res.statusCode}`);
-        
-        res.on('data', d => {
-            return d;
-        });
-    });
-
-    request.on('error', error => {
+    axios.get(baseURL)
+    .then(response => {
+        console.log(`statusCode: ${response.status}`)
+        console.log(response.data)
+        return res.json(response.data);
+    }).catch(error => {
         console.error(error);
-        return res.json(error);
     });
-
 };
 
 module.exports = {
