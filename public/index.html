@@ -1,12 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf8">
+  <title>Example</title>
 </head>
-<body>
-    
-</body>
+  <body>
+  <div class="container">
+    <div class="forms" id="login-wrapper">
+      <div class="form-wrapper">
+        <h3>Login</h3>
+        <form id="login-form" class="light-border">
+          <div>
+            <label>Email:</label>
+            <input class="light-border" type="text" name="email"/>
+          </div>
+          <div>
+            <label>Password:</label>
+            <input class="light-border" type="password" name="password"/>
+          </div>
+          <div>
+            <button class="light-border" type="submit">Log In</button>
+          </div>
+        </form>
+      </div>
+      <div class="form-wrapper">
+        <h3>Register</h3>
+        <form class="light-border" id="add-user-form">
+          <input class="light-border"
+                type="text"
+                name="name"
+                pattern=".{3,}"
+                placeholder="Name"
+                required>
+          <input class="light-border" type="email" name="email" placeholder="email" required>
+          <input class="light-border" type="password" name="password" pattern="(?=.*[A-Z]).{8,}"
+                placeholder="Password" required>
+          <button class="light-border" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+    <header id="log-out" style="display: none;">
+      <p id="user-info"></p>
+      <button class="light-border">Log out</button>
+    </header>
+  </div>
+    <script type="text/javascript" src="./js/serialize.js"></script>
+    <script type="text/javascript" src="./js/main5.js"></script>
+  </body>
 </html>
