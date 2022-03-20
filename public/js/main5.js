@@ -1,5 +1,5 @@
 'use strict';
-const url = 'https://localhost:3000'; // change url when uploading to server
+const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
 const loginWrapper = document.querySelector('#login-wrapper');
@@ -73,7 +73,7 @@ addUserForm.addEventListener('submit', async (evt) => {
     },
     body: JSON.stringify(data),
   };
-  const response = await fetch('http://localhost:3000/user', fetchOptions);
+  const response = await fetch(url + '/user', fetchOptions);
   const json = await response.json();
   console.log('user add response', json);
 });
