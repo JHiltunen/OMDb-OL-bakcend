@@ -27,13 +27,6 @@ loginForm.addEventListener('submit', async (evt) => {
   } else {
     // save token
     sessionStorage.setItem('token', json.token);
-    // show/hide forms + cats
-    loginWrapper.style.display = 'none';
-    logOut.style.display = 'block';
-    main.style.display = 'block';
-    userInfo.innerHTML = `Hello ${json.user.name}`;
-    getCat();
-    getUsers();
   }
 });
 
@@ -47,18 +40,17 @@ logOut.addEventListener('click', async (evt) => {
       },
     };
     const response = await fetch(url + '/auth/logout', options);
+    console.log("Response", response);
     const json = await response.json();
     console.log(json);
     // remove token
     sessionStorage.removeItem('token');
     alert('You have logged out');
-    // show/hide forms + cats
     loginWrapper.style.display = 'flex';
     logOut.style.display = 'none';
-    main.style.display = 'none';
   }
   catch (e) {
-    console.log(e.message);
+    console.log(e);
   }
 });
 
@@ -77,3 +69,9 @@ addUserForm.addEventListener('submit', async (evt) => {
   const json = await response.json();
   console.log('user add response', json);
 });
+
+// when app starts, check if token exists
+if (sessionStorage.getItem('token')) {
+  loginWrapper.style.display = 'none';
+  logOut.style.display = 'block';
+}
