@@ -26,6 +26,8 @@ loginForm.addEventListener('submit', async (evt) => {
     alert(json.message);
   } else {
     // save token
+    loginWrapper.style.display = 'none';
+    logOut.style.display = 'block';
     sessionStorage.setItem('token', json.token);
   }
 });
