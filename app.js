@@ -17,6 +17,11 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 
 app.use('/auth', authRoute);
 app.use('/user', userRouter);
+
+//app.use('/getMovie', movieRouter);
+//app.use('/getBook', bookRouter);
+
+
 app.use('/getMovie', passport.authenticate('jwt', {session: false}), movieRouter);
 app.use('/getBook', passport.authenticate('jwt', {session: false}), bookRouter);
 

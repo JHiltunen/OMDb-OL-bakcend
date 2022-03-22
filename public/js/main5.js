@@ -30,6 +30,7 @@ loginForm.addEventListener('submit', async (evt) => {
     loginWrapper.style.display = 'none';
     logOut.style.display = 'block';
     sessionStorage.setItem('token', json.token);
+    console.log('Token: ', json.token);
   }
 });
 
