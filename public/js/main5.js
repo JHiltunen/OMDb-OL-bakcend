@@ -6,6 +6,8 @@ const loginWrapper = document.querySelector('#login-wrapper');
 const logOut = document.querySelector('#log-out');
 const loginForm = document.querySelector('#login-form');
 const addUserForm = document.querySelector('#add-user-form');
+const searchBookForm = document.querySelector('#search-book');
+const bookInfo = document.querySelector('#bookInfo');
 
 // login
 loginForm.addEventListener('submit', async (evt) => {
@@ -72,6 +74,24 @@ addUserForm.addEventListener('submit', async (evt) => {
   const response = await fetch(url + '/user', fetchOptions);
   const json = await response.json();
   console.log('user add response', json);
+});
+
+// search book form
+searchBookForm.addEventListener('submit', async (evt) => {
+  evt.preventDefault();
+  const data = serializeJson(searchBookForm);
+  const fetchOptions = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+    },
+  };
+  console.log('Token from storage: ', sessionStorage.getItem('token'));
+  const response = await fetch(url + '/getBook?isbn=' + searchBookForm.elements['isbn'].value, fetchOptions);
+  const json = await response.json();
+  bookInfo.innerHTML = JSON.stringify(json);
+  console.log('search book response', json);
 });
 
 // when app starts, check if token exists
