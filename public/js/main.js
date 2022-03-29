@@ -63,6 +63,7 @@ logOut.addEventListener('click', async (evt) => {
     alert('You have logged out');
     loginWrapper.style.display = 'flex';
     logOut.style.display = 'none';
+    searchForms.style.display = 'none';
   }
   catch (e) {
     console.log(e);

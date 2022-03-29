@@ -6,6 +6,7 @@ const movieInfo = document.querySelector('#movieInfo');
 
 // search book form
 searchBookForm.addEventListener('submit', async (evt) => {
+  bookInfo.innerHTML = "";
     evt.preventDefault();
     const data = serializeJson(searchBookForm);
     const fetchOptions = {
@@ -25,6 +26,7 @@ searchBookForm.addEventListener('submit', async (evt) => {
   // search movie form
   searchMovieForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();
+    movieInfo.innerHTML = "";
     const data = serializeJson(searchBookForm);
     const fetchOptions = {
       method: 'GET',
