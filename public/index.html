@@ -43,6 +43,8 @@
       <p id="user-info"></p>
       <button class="light-border">Log out</button>
     </header>
+  </div>
+  <main id="searchForms" style="display: none;">
     <div class="form-wrapper">
       <h3>Search book</h3>
       <form class="light-border" id="search-book">
@@ -54,28 +56,28 @@
         <button class="light-border" type="submit">Search</button>
       </form>
     </div>
-  </div>
-  <div class="form-wrapper">
-    <h3>Search movie</h3>
-    <form class="light-border" id="search-movie">
-      <input class="light-border"
-            type="text"
-            name="t"
-            placeholder="Search movie"
-            required>
-            <input type="number" id="year" min="1900" max="2099" step="1"/>
-            <select name="plot" id="plot">
-              <option value="short">Short</option>
-              <option value="full">Full</option>
-            </select>
-      <button class="light-border" type="submit">Search</button>
-    </form>
-  </div>
-  <main>
-    <p id="bookInfo"></p>
-    <p id="movieInfo"></p>
+    <p id="bookInfo">
+    <div class="form-wrapper">
+      <h3>Search movie</h3>
+      <form class="light-border" id="search-movie">
+        <input class="light-border"
+              type="text"
+              name="t"
+              placeholder="Search movie"
+              required>
+              <input type="number" id="year" min="1900" max="2099" step="1"/>
+              <select name="plot" id="plot">
+                <option value="short">Short</option>
+                <option value="full">Full</option>
+              </select>
+        <button class="light-border" type="submit">Search</button>
+      </form>
+    </div>
+    <p id="movieInfo">
   </main>
     <script src="./js/serialize.js"></script>
-    <script src="./js/main5.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/search.js"></script>
+    <script src="./js/tables.js"></script>
   </body>
 </html>

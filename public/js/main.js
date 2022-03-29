@@ -6,13 +6,17 @@ const loginWrapper = document.querySelector('#login-wrapper');
 const logOut = document.querySelector('#log-out');
 const loginForm = document.querySelector('#login-form');
 const addUserForm = document.querySelector('#add-user-form');
-const searchBookForm = document.querySelector('#search-book');
-const bookInfo = document.querySelector('#bookInfo');
-const searchMovieForm = document.querySelector('#search-movie');
-const movieInfo = document.querySelector('#movieInfo');
+const searchForms = document.querySelector('#searchForms');
 const year = document.querySelector('#year');
 
 year.value = new Date().getFullYear();
+
+// when app starts, check if token exists
+if (sessionStorage.getItem('token')) {
+  loginWrapper.style.display = 'none';
+  logOut.style.display = 'block';
+  searchForms.style.display = 'block';
+}
 
 // login
 loginForm.addEventListener('submit', async (evt) => {
@@ -36,8 +40,8 @@ loginForm.addEventListener('submit', async (evt) => {
     loginForm.reset();
     loginWrapper.style.display = 'none';
     logOut.style.display = 'block';
+    searchForms.style.display = 'block';
     sessionStorage.setItem('token', json.token);
-    console.log('Token: ', json.token);
   }
 });
 
@@ -59,13 +63,14 @@ logOut.addEventListener('click', async (evt) => {
     alert('You have logged out');
     loginWrapper.style.display = 'flex';
     logOut.style.display = 'none';
+    searchForms.style.display = 'none';
   }
   catch (e) {
     console.log(e);
   }
 });
 
-// submit register form
+// Register user form
 addUserForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const data = serializeJson(addUserForm);
@@ -80,45 +85,3 @@ addUserForm.addEventListener('submit', async (evt) => {
   const json = await response.json();
   console.log('user add response', json);
 });
-
-// search book form
-searchBookForm.addEventListener('submit', async (evt) => {
-  evt.preventDefault();
-  const data = serializeJson(searchBookForm);
-  const fetchOptions = {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-    },
-  };
-  console.log('Token from storage: ', sessionStorage.getItem('token'));
-  const response = await fetch(url + '/getBook?isbn=' + searchBookForm.elements['isbn'].value, fetchOptions);
-  const json = await response.json();
-  bookInfo.innerHTML = JSON.stringify(json);
-  console.log('search book response', json);
-});
-
-// search movie form
-searchMovieForm.addEventListener('submit', async (evt) => {
-  evt.preventDefault();
-  const data = serializeJson(searchBookForm);
-  const fetchOptions = {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-    },
-  };
-  console.log('Token from storage: ', sessionStorage.getItem('token'));
-  const response = await fetch(url + '/getMovie?t=' + searchMovieForm.elements['t'].value + '&year=' + searchMovieForm.elements['year'].value + '&plot=' + searchMovieForm.elements['plot'].value, fetchOptions);
-  const json = await response.json();
-  movieInfo.innerHTML = JSON.stringify(json);
-  console.log('search book response', json);
-});
-
-// when app starts, check if token exists
-if (sessionStorage.getItem('token')) {
-  loginWrapper.style.display = 'none';
-  logOut.style.display = 'block';
-}
